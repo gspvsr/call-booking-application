@@ -11,7 +11,8 @@ services:
       - MONGO_INITDB_DATABASE=my_db
 
   user-api:
-    build: ./user-api
+    build: 
+      context: ./user-api
     ports:
       - "1004:1004"
     environment:
@@ -21,7 +22,8 @@ services:
       - mongo-db
 
   admin-api:
-    build: ./admin-api
+    build: 
+      context: ./admin-api
     ports:  
       - "1005:1004"
     environment:
@@ -30,14 +32,16 @@ services:
       - mongo-db
 
   user-ui:
-    build: ./user-api
+    build: 
+      context: ./user-api
     ports:
       - "3000:3000"
     depends_on:
       - user-api
 
   admin-ui:
-    build: ./admin-ui
+    build: 
+      context: ./admin-ui
     ports:  
       - "3001:3001"
     depends_on:
