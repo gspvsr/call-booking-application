@@ -5,7 +5,7 @@ services:
     image: mongo
     ports:
       - 27017:27017
-    env:
+    environment:
       - MONGO_INITDB_ROOT_USERNAME=mongoadmin
       - MONGO_INITDB_ROOT_PASSWORD=secret
       - MONGO_INITDB_DATABASE=my_db
@@ -43,6 +43,3 @@ services:
         - 3001:300
       depends_on:
         - admin-api
-
-    
-
