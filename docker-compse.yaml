@@ -22,7 +22,7 @@ services:
 
   admin-api:
     build: ./admin-api
-      ports:
+      ports:  
         - 1005:1004
       environment:
         - MONGO_URL=mongodb://mongoadmin:secret@34.238.244.137:27017/?retryWrites=true&w=majority
