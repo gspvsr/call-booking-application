@@ -12,33 +12,33 @@ services:
 
   user-api:
     build: ./user-api
-      ports:
-       - 1004:1004
-      environment:
-        - MONGO_URL=mongodb://mongoadmin:secret@34.238.244.137:27017/?retryWrites=true&w=majority
-        - ADMIN_EMAIL=gspvsr@yahoo.com
-      depends_on:
-        - mongo-db
+    ports:
+      - 1004:1004
+    environment:
+      - MONGO_URL=mongodb://mongoadmin:secret@34.238.244.137:27017/my_db?retryWrites=true&w=majority
+      - ADMIN_EMAIL=gspvsr@yahoo.com
+    depends_on:
+      - mongo-db
 
   admin-api:
     build: ./admin-api
-      ports:  
-        - 1005:1004
-      environment:
-        - MONGO_URL=mongodb://mongoadmin:secret@34.238.244.137:27017/?retryWrites=true&w=majority
-      depends_on:
-        - mongo-db
+    ports:
+      - 1005:1005
+    environment:
+      - MONGO_URL=mongodb://mongoadmin:secret@34.238.244.137:27017/my_db?retryWrites=true&w=majority
+    depends_on:
+      - mongo-db
 
   user-ui:
-    build: ./user-api
-      ports:
-        -3000:3000
-      depends_on:
-        - user-api
+    build: ./user-ui
+    ports:
+      - 3000:3000
+    depends_on:
+      - user-api
 
   admin-ui:
     build: ./admin-ui
-      ports:  
-        - 3001:300
-      depends_on:
-        - admin-api
+    ports:  
+      - 3001:3001
+    depends_on:
+      - admin-api
